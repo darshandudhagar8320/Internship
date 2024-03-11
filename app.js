@@ -16,11 +16,11 @@ const {
 } = require("./middleware/authentication");
 
 const app = express();
-const PORT = 8000;
+const PORT = process.env.PORT ||8000;
 
 //connect the mongoDB
 mongooes
-  .connect("mongodb://localhost:27017/blogify")
+  .connect(process.env.MONGO_URL)
   .then(() => {
     console.log("MongoDB Connected!");
   })
