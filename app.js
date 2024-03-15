@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const express = require("express");
 const path = require("path");
 const mongooes = require("mongoose");
@@ -9,6 +11,7 @@ const Blog = require("./models/blog");
 //import the routes
 const UserRouter = require("./routes/user");
 const BlogRouter = require("./routes/blog");
+
 
 //import middleWare
 const {
@@ -38,7 +41,6 @@ app.use(cookieParser());
 app.use(chackeForAuthenticationCookie("token"));
 app.use(express.static(path.resolve('./public')));
 
-
 //routes user
 app.get("/", async(req, res) => {
   const allBlogs = await Blog.find({});
@@ -51,7 +53,6 @@ app.use("/user", UserRouter);
 
 //router blog
 app.use('/blog', BlogRouter);
-
 
 // set the server
 app.listen(PORT, () => console.log("Server started!", PORT));
