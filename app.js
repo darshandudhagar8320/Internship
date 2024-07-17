@@ -49,6 +49,7 @@ app.get("/", async(req, res) => {
     blogs : allBlogs,
   });
 });
+
 app.use("/user", UserRouter);
 
 //router blog

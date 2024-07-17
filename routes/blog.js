@@ -28,6 +28,8 @@ router.get("/add-new", (req, res) => {
 });
 
 router.get('/:id', async (req, res)=>{
+  // populate("createdBy") req.body ma createdBy  fild ma   user ni full details add kar se bec. apde schma ma createdBy : ref = user aapel chhe athi automatic user.id == createdBy ma jeni id hoy te add thai jai
+
   const blog = await Blog.findById(req.params.id).populate("createdBy");
   const comments = await Comment.find({blogId :req.params.id}).populate("createdBy");
 
